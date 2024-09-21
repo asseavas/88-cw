@@ -15,9 +15,7 @@ productsRouter.get('/', async (req, res, next) => {
       filter.category = req.query.category;
     }
 
-    const products = await Product.find(filter)
-      .populate('category', 'title')
-      .populate('user', 'nickname phone');
+    const products = await Product.find(filter);
 
     return res.send(products);
   } catch (error) {
@@ -27,7 +25,9 @@ productsRouter.get('/', async (req, res, next) => {
 
 productsRouter.get('/:id', async (req, res, next) => {
   try {
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findById(req.params.id)
+      .populate('category', 'title')
+      .populate('user', 'nickname phone');
 
     if (product === null) {
       return res.status(404).send({error: 'Product not found'});

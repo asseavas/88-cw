@@ -34,7 +34,7 @@ usersRouter.post('/sessions', async (req, res, next) => {
   try {
     const user = await User.findOne({ username: req.body.username });
 
-    if (!req.body.username || !req.body.password || !req.body.nickname || !req.body.phone) {
+    if (!req.body.username || !req.body.password) {
       return res.status(400).send({ error: 'All fields are required!' });
     }
 
