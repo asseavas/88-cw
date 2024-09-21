@@ -52,15 +52,15 @@ const Products = () => {
   }, [categories, categoryId]);
 
   return (
-    <Grid2 container spacing={2}>
-      <Grid2 sx={{ width: 200 }}>
+    <Grid2 container spacing={5} mb={5}>
+      <Grid2 size={2} mt={5}>
         <CategoriesMenu categories={categories} />
       </Grid2>
-      <Grid2 container direction="column" spacing={2}>
+      <Grid2 container direction="column" spacing={2} size={10}  >
         <Grid2>
           <Typography variant="h4">{pageTitle}</Typography>
         </Grid2>
-        <Grid2 container spacing={1}>
+        <Grid2 container sx={{gap: '3%'}}>
           {content}
         </Grid2>
       </Grid2>

@@ -19,8 +19,6 @@ const OneProduct = () => {
   const isFetching = useAppSelector(selectOneProductFetching);
   const user = useAppSelector(selectUser);
   const isDeleting = useAppSelector(selectProductDeleting);
-  console.log(user?._id);
-  console.log(product?.user._id);
 
   const handleDeleteProduct = async (id: string) => {
     try {
@@ -40,7 +38,7 @@ const OneProduct = () => {
 
   return (
     <Container maxWidth="md">
-      <Grid2 container direction="column" spacing={2}>
+      <Grid2 container direction="column" spacing={2} mb={5}>
         <Grid2>
           <Button variant="text" startIcon={<ArrowBackIcon/>} component={Link} to="/">
             На главную
@@ -53,8 +51,8 @@ const OneProduct = () => {
             </Grid2>
           )}
           {product && (
-            <Grid2 container spacing={2}>
-              <Grid2 size={5}>
+            <Grid2 container spacing={2} direction="column">
+              <Grid2>
                 <CardMedia
                   component="img"
                   sx={{width: '100%', height: '300px', borderRadius: '10px'}}
@@ -62,18 +60,18 @@ const OneProduct = () => {
                   alt={product.title}
                 />
               </Grid2>
-              <Grid2 container size={7} direction="column">
+              <Grid2 container direction="column">
                 <Grid2 component={Typography} variant="h4" sx={{fontWeight: 'bold'}}>
                   {product.price} KGS
                 </Grid2>
                 <Grid2 component={Typography} variant="h6" color="text.secondary">
                   {product.user.nickname}
                 </Grid2>
-                <Grid2 component={Typography} variant="h6" sx={{fontWeight: 'bold'}}>
+                <Grid2 component={Typography} variant="h5" sx={{fontWeight: 'bold'}}>
                   {product.title}
                 </Grid2>
                 <Grid2 component={Typography} variant="body2" color="text.secondary">{product.category.title}</Grid2>
-                <Grid2 component={Typography} sx={{borderTop: '1px solid rgba(80, 80, 80, 0.7)', pt: 2, mt: 1}}>
+                <Grid2 component={Typography} sx={{borderTop: '1px solid rgba(80, 80, 80, 0.7)', pt: 3, mt: 1}}>
                   {product.description}
                 </Grid2>
                 {user?._id === product.user._id && (

@@ -51,3 +51,8 @@ export const StyledNavLink = styled(NavLink)({
     backgroundColor: '#0d569e',
   },
 });
+
+export const CardItem = styled(Link)({
+  textDecoration: 'none',
+  cursor: 'pointer',
+});

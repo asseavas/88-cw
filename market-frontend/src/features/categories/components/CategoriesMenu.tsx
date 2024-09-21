@@ -13,7 +13,7 @@ const CategoriesMenu: React.FC<Props> = ({ categories }) => {
   return (
     <List>
       <ListItem disableGutters>
-        <ListItemButton component={Link} to="/" selected={!categoryId}>
+        <ListItemButton component={Link} to="/" selected={!categoryId} sx={{borderRadius: '8px'}}>
           <ListItemText primary="Все продукты" />
         </ListItemButton>
       </ListItem>
@@ -23,6 +23,7 @@ const CategoriesMenu: React.FC<Props> = ({ categories }) => {
             component={Link}
             to={`/categories/${category._id}`}
             selected={category._id === categoryId}
+            sx={{borderRadius: '8px'}}
           >
             <ListItemText primary={category.title} />
           </ListItemButton>

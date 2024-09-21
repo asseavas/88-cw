@@ -1,18 +1,6 @@
 import React from 'react';
-import {
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  CardMedia,
-  Grid2,
-  IconButton,
-  styled,
-  Typography
-} from '@mui/material';
-import { Link } from 'react-router-dom';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { API_URL } from '../../../constants';
+import { Card, CardContent, CardMedia, Grid2, styled, Typography } from '@mui/material';
+import { API_URL, CardItem } from '../../../constants';
 import { Product } from '../../../types';
 
 const ImageCardMedia = styled(CardMedia)({
@@ -24,20 +12,19 @@ interface Props {
   product: Product;
 }
 
-const ProductItem: React.FC<Props> = ({ product }) => {
+const ProductItem: React.FC<Props> = ({product}) => {
   return (
-    <Grid2 sx={{ width: '300px' }}>
-      <Card sx={{ height: '100%' }}>
-        <CardHeader title={product.title} />
-        <ImageCardMedia image={`${API_URL}/${product.image}`} title={product.title} />
-        <CardContent>
-          <Typography variant="h6">{product.price} KGS</Typography>
+    <Grid2 sx={{width: '280px'}} mb={3} component={CardItem} to={`/products/${product._id}`}>
+      <Card sx={{
+        height: '330px', borderRadius: '10px', transition: 'background-color 0.3s ease', '&:hover': {
+          backgroundColor: '#262626',
+        }
+      }}>
+        <ImageCardMedia image={`${API_URL}/${product.image}`} title={product.title}/>
+        <CardContent  sx={{padding: '20px 16px 10px'}}>
+          <Typography variant="h5" sx={{fontWeight: 'bolder'}}>{product.price} KGS</Typography>
         </CardContent>
-        <CardActions>
-          <IconButton component={Link} to={`/products/${product._id}`}>
-            <ArrowForwardIcon />
-          </IconButton>
-        </CardActions>
+        <Typography variant="h6" sx={{padding: '0 16px 10px'}}>{product.title}</Typography>
       </Card>
     </Grid2>
   );
