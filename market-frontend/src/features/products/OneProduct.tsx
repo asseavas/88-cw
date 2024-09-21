@@ -71,6 +71,7 @@ const OneProduct = () => {
                   {product.title}
                 </Grid2>
                 <Grid2 component={Typography} variant="body2" color="text.secondary">{product.category.title}</Grid2>
+                <Grid2 component={Typography} variant="body2" color="text.secondary">{product.user.phone}</Grid2>
                 <Grid2 component={Typography} sx={{borderTop: '1px solid rgba(80, 80, 80, 0.7)', pt: 3, mt: 1}}>
                   {product.description}
                 </Grid2>
